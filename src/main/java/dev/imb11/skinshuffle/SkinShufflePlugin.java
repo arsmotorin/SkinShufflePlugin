@@ -57,19 +57,19 @@ public final class SkinShufflePlugin extends JavaPlugin implements Listener, Plu
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        LOGGER.info("Trying to send skinshuffle handshake to player: {}", event.getPlayer().getName());
+        // LOGGER.info("Trying to send skinshuffle handshake to player: {}", event.getPlayer().getName());
         // Wait for the player to be ready to receive the handshake
         getServer().getScheduler().runTaskLater(this, () -> {
-            LOGGER.info("Send packet!");
+            // LOGGER.info("Send packet!");
             event.getPlayer().sendPluginMessage(this, "skinshuffle:handshake", new byte[0]);
         }, 20L);
     }
 
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-        LOGGER.info("Received plugin message from player: {}", player.getName());
+        // LOGGER.info("Received plugin message from player: {}", player.getName());
         if(channel.equals("skinshuffle:refresh") || channel.equals("skinshuffle:skin_refresh")) {
-            LOGGER.info("Received skin refresh message from player: {}", player.getName());
+            // LOGGER.info("Received skin refresh message from player: {}", player.getName());
             PlayerProfile playerProfile = player.getPlayerProfile();
             // Get profileProperty from message.
             FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.wrappedBuffer(message));
