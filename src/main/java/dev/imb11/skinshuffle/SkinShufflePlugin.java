@@ -51,6 +51,7 @@ public final class SkinShufflePlugin extends JavaPlugin implements Listener, Plu
             if (debugMode) {
                 System.out.println("Send packet!");
             }
+        getServer().getScheduler().runTaskLater(this, () -> {
             event.getPlayer().sendPluginMessage(this, "skinshuffle:handshake", new byte[0]);
         }, 20L);
     }
@@ -64,6 +65,7 @@ public final class SkinShufflePlugin extends JavaPlugin implements Listener, Plu
             if (debugMode) {
                 System.out.println("Received skin refresh message from player: " + player.getName());
             }
+        if(channel.equals("skinshuffle:refresh") || channel.equals("skinshuffle:skin_refresh")) {
             PlayerProfile playerProfile = player.getPlayerProfile();
             FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.wrappedBuffer(message));
             Property prop;
