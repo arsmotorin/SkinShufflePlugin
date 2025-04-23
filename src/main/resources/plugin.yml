@@ -6,3 +6,8 @@ prefix: SkinShuffle
 authors: [IMB11]
 description: Spigot/Paper Interop for SkinShuffle
 website: https://imb11.dev/
+commands:
+  skinshuffle:
+    description: Toggles debug mode
+    usage: /<command> debug
+    permission: skinshuffle.command
