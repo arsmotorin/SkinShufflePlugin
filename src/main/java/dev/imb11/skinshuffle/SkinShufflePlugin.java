@@ -19,12 +19,13 @@ import org.bukkit.craftbukkit.entity.CraftPlayer;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class SkinShufflePlugin extends JavaPlugin implements Listener, PluginMessageListener {
 
-    public final static String CBS = Bukkit.getServer().getClass().getPackage().getName();
+    public static final String CBS = Bukkit.getServer().getClass().getPackage().getName();
     private static boolean debugMode = false;
     private static Logger logger;
 
@@ -69,7 +70,7 @@ public final class SkinShufflePlugin extends JavaPlugin implements Listener, Plu
     }
 
     @Override
-    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+    public void onPluginMessageReceived(@NotNull String channel, @NotNull Player player, byte[] message) {
         if (debugMode) {
             logger.info("Received plugin message from player: {}", player.getName());
         }
@@ -116,7 +117,7 @@ public final class SkinShufflePlugin extends JavaPlugin implements Listener, Plu
 
     private static class SkinShuffleCommand implements CommandExecutor {
         @Override
-        public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
             if (args.length == 1 && args[0].equalsIgnoreCase("debug")) {
                 debugMode = !debugMode;
 
